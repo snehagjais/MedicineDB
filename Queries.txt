@@ -1,0 +1,62 @@
+drop table doctors;
+drop table medicine;
+drop table prescription;
+drop table userproblem;
+drop table users;
+
+CREATE TABLE `doctors` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `experience` varchar(45) DEFAULT NULL,
+  `degree` varchar(45) DEFAULT NULL,
+  `hospital` varchar(45) DEFAULT NULL,
+  `fee` double DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE `medicine` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `medicine_name` varchar(45) NOT NULL,
+  `company` varchar(45) NOT NULL,
+  `composition` tinytext,
+  `type` varchar(45) DEFAULT NULL,
+  `effective_part` varchar(45) DEFAULT NULL,
+  `quantity_per_day` int(11) DEFAULT NULL,
+  `unit_price` double DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE `prescription` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `doctorName` varchar(45) NOT NULL,
+  `medicines` tinytext NOT NULL,
+  `description` tinytext,
+  `userName` varchar(45) DEFAULT NULL,
+  `userId` int(11) NOT NULL,
+  `problemId` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `userproblem` (
+  `problemId` int(11) NOT NULL AUTO_INCREMENT,
+  `contact` varchar(45) NOT NULL,
+  `age` int(11) NOT NULL,
+  `symptom` varchar(45) NOT NULL,
+  `description` tinytext,
+  `sufferingDays` int(11) DEFAULT NULL,
+  `doctorId` int(11) NOT NULL,
+  `active` tinyint(4) NOT NULL DEFAULT '1',
+  `userId` varchar(45) NOT NULL,
+  PRIMARY KEY (`problemId`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `type` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
